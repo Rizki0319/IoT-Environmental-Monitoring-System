@@ -1,8 +1,115 @@
 # IoT Temperature and Humidity Monitoring System
 
-## Description
-End-to-end IoT environmental monitoring system using Arduino UNO WiFi Rev2, DHT22, MQTT, HiveMQ Cloud, Node-RED, and MongoDB.
-MQTT was used as the communication protocol between the Arduino and HiveMQ Cloud. Temperature and humidity measurements are published to separate MQTT topics using numeric payloads at a 5-second interval. The MQTT connection is secured using TLS over port 8883.
+An end-to-end IoT environmental monitoring system for collecting, transmitting, processing, visualizing, and storing temperature and humidity data.
 
-## Demo
+The system uses an **Arduino UNO WiFi Rev2** and **DHT22 sensor** to collect environmental measurements. The data is transmitted using **MQTT over TLS** to **HiveMQ Cloud**, processed and visualized using **Node-RED**, and stored in **MongoDB** for persistent data storage.
+
+## Demonstration
 https://youtu.be/DnVqAgHzPDk
+---
+
+## 📌 Project Overview
+
+This project demonstrates the development and integration of an end-to-end IoT monitoring system, starting from sensor data acquisition at the edge device to secure communication, data processing, visualization, and database storage.
+
+### System Flow
+
+**DHT22 → Arduino UNO WiFi Rev2 → Wi-Fi → MQTT/TLS → HiveMQ Cloud → Node-RED → MongoDB**
+
+The project was developed as a personal project to strengthen practical skills in:
+
+- Embedded Systems
+- IoT System Integration
+- Sensor Integration
+- MQTT Communication
+- TLS-secured Communication
+- Node-RED
+- Cloud MQTT Broker
+- Database Integration
+- System Testing
+- Technical Troubleshooting
+- Technical Documentation
+
+---
+
+## 🎯 Project Objective
+
+The objectives of this project are:
+
+- Collect temperature and humidity data using a DHT22 sensor.
+- Process sensor data using an Arduino UNO WiFi Rev2.
+- Connect the microcontroller to a Wi-Fi network.
+- Transmit sensor data using the MQTT protocol.
+- Implement secure MQTT communication using TLS.
+- Use HiveMQ Cloud as the MQTT broker.
+- Receive and process MQTT messages using Node-RED.
+- Visualize the sensor data.
+- Store sensor measurements in MongoDB.
+- Test and troubleshoot the complete IoT data pipeline.
+
+---
+
+## ⚙️ Key Features
+
+- 🌡️ Temperature monitoring
+- 💧 Humidity monitoring
+- 📡 Wi-Fi connectivity
+- 📬 MQTT communication
+- 🔐 MQTT over TLS
+- ☁️ HiveMQ Cloud MQTT broker
+- 🔄 Node-RED data processing
+- 📊 Data visualization
+- 🗄️ MongoDB data storage
+- 🔧 System testing and troubleshooting
+
+---
+
+## 🏗️ System Architecture
+
+![System Architecture](media/system-architecture.png)
+
+### Architecture
+
+```text
+┌───────────────┐
+│    DHT22      │
+│ Temperature & │
+│    Humidity   │
+└───────┬───────┘
+        │
+        │ Sensor Data
+        ▼
+┌──────────────────────┐
+│ Arduino UNO WiFi Rev2│
+│                      │
+│ • Sensor Acquisition │
+│ • Data Processing    │
+│ • Wi-Fi Connection   │
+│ • MQTT Publishing    │
+└──────────┬───────────┘
+           │
+           │ Wi-Fi
+           ▼
+┌──────────────────────┐
+│    HiveMQ Cloud      │
+│                      │
+│   MQTT Broker + TLS  │
+└──────────┬───────────┘
+           │
+           │ MQTT
+           ▼
+┌──────────────────────┐
+│      Node-RED        │
+│                      │
+│ • MQTT Subscribe     │
+│ • Data Processing    │
+│ • Visualization      │
+└──────────┬───────────┘
+           │
+           │ Data
+           ▼
+┌──────────────────────┐
+│       MongoDB        │
+│                      │
+│   Data Storage       │
+└──────────────────────┘
