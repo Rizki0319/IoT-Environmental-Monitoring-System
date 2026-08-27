@@ -66,10 +66,6 @@ The objectives of this project are:
 
 ## 🏗️ System Architecture
 
-![System Architecture](documentation/system-architecture.png) 
-
-### Architecture
-
 ```text
    ┌───────────────┐
    │    DHT22      │
