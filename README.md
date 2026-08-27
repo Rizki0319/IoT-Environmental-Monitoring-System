@@ -66,46 +66,4 @@ The objectives of this project are:
 
 ## 🏗️ System Architecture
 
-```text
-   ┌───────────────┐
-   │    DHT22      │
-   │ Temperature & │
-   │    Humidity   │
-   └───────┬───────┘
-           │
-           │ Sensor Data
-           ▼
-┌──────────────────────┐
-│ Arduino UNO WiFi Rev2│
-│                      │
-│ • Sensor Acquisition │
-│ • Data Processing    │
-│ • Wi-Fi Connection   │
-│ • MQTT Publishing    │
-└──────────┬───────────┘
-           │
-           │ Wi-Fi
-           ▼
-┌──────────────────────┐
-│    HiveMQ Cloud      │
-│                      │
-│   MQTT Broker + TLS  │
-└──────────┬───────────┘
-           │
-           │ MQTT
-           ▼
-┌──────────────────────┐
-│      Node-RED        │
-│                      │
-│ • MQTT Subscribe     │
-│ • Data Processing    │
-│ • Visualization      │
-└──────────┬───────────┘
-           │
-           │ Data
-           ▼
-┌──────────────────────┐
-│       MongoDB        │
-│                      │
-│   Data Storage       │
-└──────────────────────┘
+![System Architecture](documentation/system-architecture.png)
