@@ -66,7 +66,7 @@ The objectives of this project are:
 
 ## 🏗️ System Architecture
 
-![System Architecture](media/system-architecture.png)
+![System Architecture](documentation/system-architecture.png) 
 
 ### Architecture
 
