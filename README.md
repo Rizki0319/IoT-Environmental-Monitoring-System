@@ -2,8 +2,8 @@
 
 The system uses an **Arduino UNO WiFi Rev2** and **DHT22 sensor** to collect environmental measurements. The data is transmitted using **MQTT over TLS** to **HiveMQ Cloud**, processed and visualized using **Node-RED**, and stored in **MongoDB** for persistent data storage.
 
-## Demonstration
-https://youtu.be/DnVqAgHzPDk
+## Demo
+[Watch Project Demo](https://youtu.be/loq12zat6X8)
 ---
 
 ## 📌 Project Overview
