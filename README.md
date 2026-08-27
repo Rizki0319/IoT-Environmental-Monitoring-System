@@ -1,7 +1,5 @@
 # IoT Temperature and Humidity Monitoring System
 
-An end-to-end IoT environmental monitoring system for collecting, transmitting, processing, visualizing, and storing temperature and humidity data.
-
 The system uses an **Arduino UNO WiFi Rev2** and **DHT22 sensor** to collect environmental measurements. The data is transmitted using **MQTT over TLS** to **HiveMQ Cloud**, processed and visualized using **Node-RED**, and stored in **MongoDB** for persistent data storage.
 
 ## Demonstration
