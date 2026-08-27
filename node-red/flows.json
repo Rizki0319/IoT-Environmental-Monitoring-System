@@ -1,0 +1,665 @@
+[
+    {
+        "id": "8affa9461d5b2769",
+        "type": "tab",
+        "label": "Menu",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c313a9d86301458b",
+        "type": "group",
+        "z": "8affa9461d5b2769",
+        "name": "Data Sensor DHT22 from Arduino WiFi Rev2",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "b73dc6a3370d13d3",
+            "38d6a8fea99efeb7",
+            "2430aee27504860c",
+            "52383380e1376afe",
+            "06ea0af56bc4d1a7",
+            "9a6a02fb317348a2",
+            "187a44b1b2ed4bef",
+            "51a203e45d7b5ef5",
+            "f3e35b7e70f1402b",
+            "d1e963a7474ebfc8",
+            "9af10e924053022d",
+            "d32a4e5534083ca4"
+        ],
+        "x": 114,
+        "y": 99,
+        "w": 852,
+        "h": 342
+    },
+    {
+        "id": "b73dc6a3370d13d3",
+        "type": "mqtt in",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "name": "Sensor DHT22 (Temp)",
+        "topic": "DHT22/environment/temperature",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "f1f6a8292c9a66bb",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 200,
+        "wires": [
+            [
+                "52383380e1376afe",
+                "9a6a02fb317348a2",
+                "51a203e45d7b5ef5"
+            ]
+        ]
+    },
+    {
+        "id": "38d6a8fea99efeb7",
+        "type": "mqtt in",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "name": "Sensor DHT22 (Hum)",
+        "topic": "DHT22/environment/humidity",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "f1f6a8292c9a66bb",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 380,
+        "wires": [
+            [
+                "2430aee27504860c",
+                "06ea0af56bc4d1a7",
+                "d1e963a7474ebfc8"
+            ]
+        ]
+    },
+    {
+        "id": "2430aee27504860c",
+        "type": "ui-gauge",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "name": "Hum Gauge",
+        "group": "0fee9a0fce8418a3",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "6",
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "rounded",
+        "title": "Humidity",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ff0000",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "40",
+                "color": "#e1ff00",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "60",
+                "color": "#009dff",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 650,
+        "y": 360,
+        "wires": [
+            [
+                "d32a4e5534083ca4"
+            ]
+        ]
+    },
+    {
+        "id": "52383380e1376afe",
+        "type": "ui-chart",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "group": "7ae4070401821939",
+        "name": "Temp Chart",
+        "label": "Temperature from DHT22",
+        "order": 1,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "Time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Temperature",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": 3,
+        "className": "",
+        "interpolation": "linear",
+        "x": 650,
+        "y": 240,
+        "wires": [
+            [
+                "f3e35b7e70f1402b"
+            ]
+        ]
+    },
+    {
+        "id": "06ea0af56bc4d1a7",
+        "type": "ui-chart",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "group": "31cd7a56d1c69f0b",
+        "name": "Hum Chart",
+        "label": "Humidity from DHT22",
+        "order": 1,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "Time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Humidity",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": 3,
+        "className": "",
+        "interpolation": "linear",
+        "x": 650,
+        "y": 400,
+        "wires": [
+            [
+                "d32a4e5534083ca4"
+            ]
+        ]
+    },
+    {
+        "id": "9a6a02fb317348a2",
+        "type": "ui-gauge",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "name": "Temp Gauge",
+        "group": "ee92fe6fb593d71c",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "6",
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Temperature",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "-40",
+                "color": "#00a2e8",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "0",
+                "color": "#22b14c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "40",
+                "color": "#ed2624",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "-40",
+        "max": "80",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 650,
+        "y": 200,
+        "wires": [
+            [
+                "f3e35b7e70f1402b"
+            ]
+        ]
+    },
+    {
+        "id": "187a44b1b2ed4bef",
+        "type": "mongodb4",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "clientNode": "ecbcb1d382e7343a",
+        "mode": "collection",
+        "collection": "data_dht22",
+        "operation": "insertOne",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "MongoDB",
+        "x": 660,
+        "y": 140,
+        "wires": [
+            [
+                "f3e35b7e70f1402b"
+            ]
+        ]
+    },
+    {
+        "id": "51a203e45d7b5ef5",
+        "type": "function",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "name": "tempValue",
+        "func": "const tempValue = parseFloat(msg.payload);\n\nif (isNaN(tempValue)) {\n    // If fail, send error or set null\n    msg.payload = { \n        temperature: null, \n        timestamp: new Date(),\n        error: \"Input is not a valid number\"\n    };\n} else {\n    msg.payload = { \n        temperature: tempValue, \n        timestamp: new Date() \n    };\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 140,
+        "wires": [
+            [
+                "187a44b1b2ed4bef"
+            ]
+        ]
+    },
+    {
+        "id": "f3e35b7e70f1402b",
+        "type": "debug",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "name": "debug temp",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "d1e963a7474ebfc8",
+        "type": "function",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "name": "humValue",
+        "func": "const humValue = parseFloat(msg.payload);\n\nif (isNaN(humValue)) {\n    // If fail, send error or set null\n    msg.payload = { \n        humidity: null, \n        timestamp: new Date(),\n        error: \"Input is not a valid number\"\n    };\n} else {\n    msg.payload = { \n        humidity: humValue, \n        timestamp: new Date() \n    };\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 300,
+        "wires": [
+            [
+                "9af10e924053022d"
+            ]
+        ]
+    },
+    {
+        "id": "9af10e924053022d",
+        "type": "mongodb4",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "clientNode": "ecbcb1d382e7343a",
+        "mode": "collection",
+        "collection": "data_dht22",
+        "operation": "insertOne",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "MongoDB",
+        "x": 660,
+        "y": 300,
+        "wires": [
+            [
+                "d32a4e5534083ca4"
+            ]
+        ]
+    },
+    {
+        "id": "d32a4e5534083ca4",
+        "type": "debug",
+        "z": "8affa9461d5b2769",
+        "g": "c313a9d86301458b",
+        "name": "debug hum",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "f1f6a8292c9a66bb",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Cloud",
+        "broker": "YOUR_CLUSTER_URL_HIVEMQ",
+        "port": "8883",
+        "tls": "79d97b5790682b58",
+        "clientid": "node-red-project1-dht22",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "0fee9a0fce8418a3",
+        "type": "ui-group",
+        "name": "Hum Gauge",
+        "page": "61d9669e41c60ea0",
+        "width": 6,
+        "height": 1,
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "7ae4070401821939",
+        "type": "ui-group",
+        "name": "Temp Chart",
+        "page": "61d9669e41c60ea0",
+        "width": 6,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "31cd7a56d1c69f0b",
+        "type": "ui-group",
+        "name": "Hum Chart",
+        "page": "61d9669e41c60ea0",
+        "width": 6,
+        "height": 1,
+        "order": 4,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "ee92fe6fb593d71c",
+        "type": "ui-group",
+        "name": "Temp Gauge",
+        "page": "61d9669e41c60ea0",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "ecbcb1d382e7343a",
+        "type": "mongodb4-client",
+        "name": "MongoDB",
+        "protocol": "mongodb",
+        "hostname": "",
+        "port": "",
+        "dbName": "project1DHT22",
+        "appName": "",
+        "authSource": "",
+        "authMechanism": "DEFAULT",
+        "tls": false,
+        "tlsCAFile": "",
+        "tlsCertificateKeyFile": "",
+        "tlsInsecure": false,
+        "connectTimeoutMS": "30000",
+        "socketTimeoutMS": "0",
+        "minPoolSize": "0",
+        "maxPoolSize": "100",
+        "maxIdleTimeMS": "0",
+        "uri": "mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/?appName=YOUR_APP_NAME",
+        "advanced": "{}",
+        "uriTabActive": "tab-uri-advanced"
+    },
+    {
+        "id": "79d97b5790682b58",
+        "type": "tls-config",
+        "name": "",
+        "certType": "files",
+        "cert": "",
+        "key": "",
+        "p12": "",
+        "p12name": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": "",
+        "certEnv": "",
+        "keyEnv": "",
+        "caEnv": ""
+    },
+    {
+        "id": "61d9669e41c60ea0",
+        "type": "ui-page",
+        "name": "Menu",
+        "ui": "e70e10d83d1c0a2a",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "e6322168fb96b554",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "e70e10d83d1c0a2a",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "e6322168fb96b554",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#8f0000",
+            "primary": "#8f0000",
+            "bgPage": "#ffffff",
+            "groupBg": "#cccccc",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "df38ead8d2ed7482",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.30.2",
+            "node-red-contrib-mongodb4": "3.4.0"
+        }
+    }
+]
