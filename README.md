@@ -71,14 +71,14 @@ The objectives of this project are:
 ### Architecture
 
 ```text
-┌───────────────┐
-│    DHT22      │
-│ Temperature & │
-│    Humidity   │
-└───────┬───────┘
-        │
-        │ Sensor Data
-        ▼
+   ┌───────────────┐
+   │    DHT22      │
+   │ Temperature & │
+   │    Humidity   │
+   └───────┬───────┘
+           │
+           │ Sensor Data
+           ▼
 ┌──────────────────────┐
 │ Arduino UNO WiFi Rev2│
 │                      │
