@@ -554,7 +554,7 @@
         "minPoolSize": "0",
         "maxPoolSize": "100",
         "maxIdleTimeMS": "0",
-        "uri": "mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/?appName=YOUR_APP_NAME",
+        "uri": "PASTE YOUR URI HERE",
         "advanced": "{}",
         "uriTabActive": "tab-uri-advanced"
     },
