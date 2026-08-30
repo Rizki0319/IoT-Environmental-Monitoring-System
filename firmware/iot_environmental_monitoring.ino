@@ -8,17 +8,17 @@
 DHT dht(DHTPIN, DHTTYPE);
 
 // WI-FI SETUP
-char WIFI_SSID[] = "YOUR_WIFI_SSID";          // Change with your WiFi Name
-char WIFI_PASS[] = "YOUR_WIFI_PASSWORD";      // Change with your WiFi Password
+char WIFI_SSID[] = "YOUR_WIFI_SSID";          //Change with your WiFi Name
+char WIFI_PASS[] = "YOUR_WIFI_PASSWORD";      //Change with your WiFi Password
 
 // HIVEMQ CLOUD MQTT SETUP (free Serverless cluster)
-const char* MQTT_HOST = "YOUR_CLUSTER_URL_HIVEMQ"; // Your cluster URL from HiveMQ Cloud console
+const char* MQTT_HOST = "YOUR_CLUSTER_URL_HIVEMQ"; // your cluster URL from HiveMQ Cloud console
 
 // HiveMQ Cloud MQTT over TLS
 const int MQTT_PORT = 8883;
 
 // HiveMQ Cloud credentials
-const char* MQTT_USER = "YOUR_USERNAME";  // Credential you create under Access Management
+const char* MQTT_USER = "YOUR_USERNAME";  // credential you create under Access Management
 const char* MQTT_PASS = "YOUR_PASSWORD";
 
 // MQTT TOPICS
@@ -41,42 +41,31 @@ unsigned long lastPublish = 0;
 
 // CONNECT WI-FI
 void connectWiFi() {
-  Serial.print("Wi-Fi: Connecting to ");
-  Serial.println(WIFI_SSID);
+  Serial.println("Wi-Fi: Connecting.... ");
+  //Serial.println(WIFI_SSID);  
 
   while (WiFi.status() != WL_CONNECTED) {
     WiFi.begin(WIFI_SSID, WIFI_PASS);
-    delay(3000);
-    Serial.println("Wi-Fi: retry...");
+    delay(3000);    
   }
 
-  Serial.println("Wi-Fi: Connected");
+  //Serial.println("Wi-Fi: Connected");
 }
 
 // CONNECT MQTT CLOUD
-bool connectMQTT() {
-  Serial.println("[MQTT] Entering connectMQTT()");
+bool connectMQTT() {  
+  //Serial.print("[MQTT] Host: ");
+  //Serial.println(MQTT_HOST);
 
-  Serial.print("[MQTT] Host: ");
-  Serial.println(MQTT_HOST);
-
-  Serial.print("[MQTT] Port: ");
-  Serial.println(MQTT_PORT);
-
-  // Security check: prevent connection attempt with default placeholders
-  if (String(MQTT_HOST) == "YOUR_CLUSTER_URL_HIVEMQ" ||
-      String(MQTT_USER) == "YOUR_USERNAME" ||
-      String(MQTT_PASS) == "YOUR_PASSWORD") {
-    Serial.println("[MQTT] ERROR: MQTT credentials/configuration not configured.");
-    return false;
-  }
+  //Serial.print("[MQTT] Port: ");
+  //Serial.println(MQTT_PORT);
 
   Serial.println("[MQTT] Creating Client ID...");
 
   String clientId = "arduino-wifi-rev2-dht22-"; // Generate a unique MQTT Client ID
   clientId += String((unsigned long)millis(), HEX);
 
-  Serial.println("[MQTT] Calling mqttClient.connect()...");
+  //Serial.println("[MQTT] Calling mqttClient.connect()...");
 
   bool connected = mqttClient.connect(
     clientId.c_str(),
@@ -84,7 +73,7 @@ bool connectMQTT() {
     MQTT_PASS
   );
 
-  Serial.println("[MQTT] Returned from mqttClient.connect()");
+  //Serial.println("[MQTT] Returned from mqttClient.connect()");
 
   if (connected) {
     Serial.println("[MQTT] Connected!");
@@ -99,7 +88,7 @@ bool connectMQTT() {
 // ENSURE CONNECTIONS
 void ensureConnections() {
   // Check Wi-Fi
-  if (WiFi.status() != WL_CONNECTED) {
+    if (WiFi.status() != WL_CONNECTED) {
     Serial.println("Wi-Fi: Disconnected");
     connectWiFi();
   }
@@ -107,7 +96,7 @@ void ensureConnections() {
   // Check MQTT
   if (!mqttClient.connected()) {
     Serial.println("MQTT: Disconnected");
-
+    
     // Do not publish while disconnected.
     // Immediately try reconnect.
 
@@ -132,15 +121,6 @@ void setup() {
   Serial.println("Arduino WiFi Rev2 + DHT22");
   Serial.println("HiveMQ Cloud MQTT TLS");
   Serial.println("================================");
-
-  // Security check: prevent operation with default Wi-Fi placeholders
-  if (String(WIFI_SSID) == "YOUR_WIFI_SSID" ||
-      String(WIFI_PASS) == "YOUR_WIFI_PASSWORD") {
-    Serial.println("[ERROR] Wi-Fi credentials not configured.");
-    while (true) {
-      delay(1000);
-    }
-  }
 
   dht.begin();
 
@@ -190,7 +170,7 @@ void loop() {
     // Sensor Validation
     if (isnan(h) || isnan(t)) {
       Serial.println("DHT22: Read failed");
-      mqttClient.publish(TOPIC_STATUS, "sensor_read_failed", true);
+      mqttClient.publish(TOPIC_STATUS,"sensor_read_failed",true);
       return;
     }
 
@@ -214,14 +194,14 @@ void loop() {
     dtostrf(h, 0, 1, humStr);
 
     // Publish temperature
-    bool okT = mqttClient.publish(TOPIC_TEMP, tempStr);
+    bool okT = mqttClient.publish(TOPIC_TEMP,tempStr);
 
     // Publish humidity
-    bool okH = mqttClient.publish(TOPIC_HUM, humStr);
+    bool okH = mqttClient.publish(TOPIC_HUM,humStr);
 
     // Publish result
     Serial.println("MQTT:");
-    Serial.println(okT ? "Temperature published" : "Temperature publish failed");
-    Serial.println(okH ? "Humidity published" : "Humidity publish failed");
+    Serial.println(okT ? "Temperature published": "Temperature publish failed");
+    Serial.println(okH ? "Humidity published": "Humidity publish failed");
   }
 }
